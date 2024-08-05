@@ -1,4 +1,4 @@
-# Microservices Demo Project
+# Microservices Study Project
 
 This project demonstrates a basic microservices architecture with an API Gateway, Order Service, and Product Service.
 
