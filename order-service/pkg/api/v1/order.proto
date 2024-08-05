@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "order-service/pkg/api/v1;orderpb";
+
+// Сервис управления заказами
+service OrderService {
+  rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+}
+
+message CreateOrderRequest {
+  string userId = 1;
+  int32 productId = 2;
+  int32 quantity = 3;
+}
+
+message CreateOrderResponse {
+  bool success = 1;
+  string error = 2;
+}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "product-service/pkg/api/v1;productpb";
+
+// Сервис управления продуктами
+service ProductService {
+  rpc AddProduct (AddProductRequest) returns (AddProductResponse);
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse);
+  rpc ListProducts (ListProductsRequest) returns (ListProductsResponse);
+  rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse);
+}
+
+message AddProductRequest {
+  string name = 1;
+  float price = 2;
+  int32 quantity = 3;
+}
+
+message AddProductResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+message GetProductRequest {
+  int32 id = 1;
+}
+
+message GetProductResponse {
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  int32 quantity = 4;
+  string error = 5;
+}
+
+message UpdateProductRequest {
+  int32 id = 1;
+  string name = 2;
+  float price = 3;
+  int32 quantity = 4;
+}
+
+message UpdateProductResponse {
+  bool success = 1;
+  string error = 2;
+}
+
+message ListProductsRequest {}
+
+message ListProductsResponse {
+  repeated GetProductResponse products = 1;
+}
